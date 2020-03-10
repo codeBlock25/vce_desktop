@@ -1,0 +1,336 @@
+.View {
+    position: fixed;
+    top: 4px;
+    left: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    display: flex;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.View * {
+    font-family: Montserrat;
+}
+.View nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: block;
+    z-index: 10;
+}
+.View nav header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+
+}
+.View nav header .title {
+    width: 150px;
+    height: 100%;
+    display: block;
+    text-align: center;
+    line-height: 70px;
+    font-weight: 600;
+    font-size: 25px;
+    font-family: Montserrat-bold;
+    color: #3F51B5;
+}
+.View nav header .skip {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 150px;
+    height: 45px;
+    display: flex;
+    line-height: 45px;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    color: #8e9ef9;
+    border-radius: 60px;
+    box-shadow: -6px -6px 18px #e0e0e075, inset 4px 3px 6px #33333317;
+    transition: ease-in-out .3s;
+    cursor: pointer;
+}
+.View nav header .skip svg { 
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    fill: #8e9ef9;
+    transition: ease-in-out .3s;
+}
+.View nav header .skip:hover {
+    background-color: rgb(146, 162, 255);
+    color: white;
+}
+.View nav header .skip:hover svg {
+    margin-left: 20px;
+    fill: white;
+}
+
+.View nav header .nav_list {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100px;
+    height: calc(100% - 75px);
+    display: block;
+    padding: 50px 0 0 0;
+}
+.View nav header .nav_list .nav {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+    width: 70px;
+    height: 70px;
+    display: block;
+    box-shadow: 0 0 0 2px black;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+    color: #333333;
+    line-height: 100px;
+    text-transform: capitalize;
+    font-size: .8em;
+    text-align: center;
+    box-shadow: -8px -8px 10px #ffffffd4, 6px 6px 10px #0000000a;
+    margin: 30px 0;
+    transition: ease-in-out .3s;
+    cursor: pointer;
+}
+.View nav header .nav_list .nav:hover {
+    transform: translateX(-50%) scale(1.1);
+}
+.View nav header .nav_list .nav.active {
+    transform: translateX(-50%) scale(1.1);
+    background-color: #3f51b540;
+    color: white;
+    box-shadow: -8px -8px 10px #eaeaeade, 5px 3px 10px #0000002b;
+    border: #bbc5ff 1px solid;
+}
+.View nav header .nav_list .nav .svg {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    display: block;
+    /* background-image: url(../assets/icons/man.svg) !important;s */
+    background-position: center;
+    background-size: cover;
+}
+.View .container {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: calc(100% - 120px);
+    height: calc(100% - 120px);
+    display: block;
+    background-color: #f9f9f9;
+    border: #f9f9f9 1px solid;
+    box-shadow: -8px -8px 10px #ffffff6e, 6px 6px 10px #00000014;
+    border-radius: 100px 10px 10px 0;
+    z-index: 1000;
+}
+.View .container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-image: url(../assets/images/slickplan_contentplanning.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 100px 10px 10px 0;
+    opacity: .1;
+}
+
+.View .container .title {
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    line-height: 60px;
+    font-size: 20px;
+}
+.View .container .minTitle {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: Montserrat-light;
+    font-size: .8em;
+}
+
+.View .container .minTitle .animate {
+    width: 100px;
+    height: 20px;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    margin: 5px 5px 0 5px;
+    background-color: black;
+    color: white;
+    animation: animate_swim 5s linear infinite normal forwards;
+}
+@keyframes animate_swim {
+    0% {
+        opacity: 1;
+    } 90% {
+        opacity: 0.8;
+    }
+    93% {
+        opacity: .9;
+    }
+    97% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.View .container .minTitle .animate span {
+    position: relative;
+    width: 100%;
+    min-width: 100%;
+    display: block;
+    height: 100%;
+    min-height: 100%;
+    line-height: 20px;
+    animation: animate_move1 15s linear infinite normal forwards;
+}
+@keyframes animate_move1 {
+    0% {
+        top: 0;
+    }
+    29% {
+        top: 0px;
+    }
+    30% {
+        top: -22px;
+    }
+    61% {
+        top: -22px;
+    }
+    62% {
+        top: -42px;
+    }
+    89% {
+        top: -42px;
+    }
+    90% {
+        top: -62px;
+    }
+    100% {
+        top: -62px;
+    }
+}
+
+.View .container form {
+    position: relative;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 50px auto;
+}
+.View .container form .inputBox {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    margin: 50px 0;
+}
+.View .container form .inputBox .inputLabel {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: block;
+    background-position: center;
+    background-size: cover;
+    box-shadow: -5px -5px 5px #ffffff4d, 4px 4px 5px #0000000f;
+    border-radius: 10px;
+}
+.View .container form .inputBox .inputLabel::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+.View .container form .inputBox .inputLabel[data-type='email']::before {content: url(../assets/icons/user.svg)}
+.View .container form .inputBox .inputLabel[data-type='password']::before {content: url(../assets/icons/key.svg);}
+.View .container form .inputBox .inputTxt {
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+    background-color: transparent;
+    width: calc(90% - 100px);
+    height: 70%;
+    padding: 0 30px;
+    border-bottom: 1px #6772ad solid;
+    margin: 0 10px;
+    line-height: 70px;
+}
+.View .container form .forget {
+    margin: -30px auto 30px auto;
+    width: fit-content;
+    display: block;
+    text-decoration: none;
+    color: #6772ad;
+}
+.View .container form button {
+    width: 300px;
+    height: 50px;
+    display: block;
+    background-color: #101010;
+    color: white;
+    margin: 0 auto;
+    border-radius: 60px;
+    box-shadow: -5px -5px 5px #ffffffbf, 2px 3px 13px #0000006e;
+    cursor: pointer;
+}
+.View .container form button span {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-image: url(../assets/icons/enter.svg);
+    background-position: center;
+    background-size: cover;
+    margin: 0 7px;
+    transition: ease-in-out .3s;
+}
+.View .container form button:hover span {
+    margin: 0 12px;
+    left: 12px;
+}
+.View .container .accountLink {
+    margin: 0 auto;
+    width: fit-content;
+    display: block;
+}
+.View .container .accountLink a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #6c7ede;
+    text-shadow: 0 0 0px #c9d1ff;
+    transition: ease-in-out .3s;
+    position: relative;
+    top: 0;
+}
+.View .container .accountLink a:hover {
+    text-shadow: 0 8px 2px #c9d1ff;
+    top: -3px
+}

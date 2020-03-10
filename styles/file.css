@@ -1,0 +1,76 @@
+.file {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.file .title {
+    width: 100%;
+    min-width: 100%;
+    height: 50px;
+    text-align: center;
+    display: block;
+    font-size: 25px;
+    font-family: KronaOne;
+    text-transform: uppercase;
+    color: #ff5555;
+}
+
+.file .load {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 85%;
+    min-width: 600px;
+    height: 90%;
+    max-height: 400px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    flex-wrap: wrap;
+}
+
+
+
+.file .load .method {
+    width: 200px;
+    height: 160px;
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: Montserrat;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.file .load a {
+    text-decoration: none;
+    color: #101010;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-self: center;
+}
+.file .load .method:hover {
+    background-color: #101010;
+    color: white;
+}
+
+.file .load .method svg {
+    width: 100px;
+    height: 100px;
+    margin: 20px 50px 0 50px;
+    fill: #101010;
+}
+
+.file .load .method:hover svg {
+    fill: #ff4949
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/account.css" />
+    <title>VCE -- Account</title>
+  </head>
+  <body>
+    <section class="Account">
+      <form action="">
+        <h3 class="title">FDS--VCE App</h3>
+        <p class="txt">please</p>
+        <div class="inputBox">
+          <label for="inputName">Author Name</label>
+          <input
+            type="text"
+            id="inputName"
+            placeholder="Fiddoo dev solution"
+            required
+          />
+        </div>
+        <div class="inputBox">
+          <label for="inputType">Question Type</label>
+          <input
+            type="checkbox"
+            id="inputType"
+            value="Test"
+            checked
+            data-checkbox="true"
+            onchange="
+              this.nextElementSibling.checked = false
+            "
+          />
+          <input
+            type="checkbox"
+            onchange="
+            this.previousElementSibling.checked = false
+            "
+            value="Exam"
+            data-checkbox="true"
+          />
+        </div>
+        <div class="inputBox">
+          <label for="inputTitle">Title</label>
+          <input
+            type="text"
+            id="inputTitle"
+            placeholder="Editor VCE"
+            required
+          />
+        </div>
+        <div class="inputBox">
+          <label for="inputDistription">Destription (option)</label>
+          <textarea
+            type="text"
+            placeholder="questions set for the elit"
+            class="textArea"
+            required
+            id="inputDistription"
+          ></textarea>
+        </div>
+        <div class="inputBox">
+          <label for="inputTime">Time (mins)</label>
+          <input
+            type="number"
+            id="inputTime"
+            placeholder="be specific number only"
+            required
+          />
+        </div>
+        <div class="inputBox">
+          <label for="inputInstruction">Instruction</label>
+          <textarea
+            type="text"
+            placeholder="guildlines for question"
+            required
+            id="inputInstruction"
+          ></textarea>
+        </div>
+        <div class='inputBox'>
+        <label for="inputPassword">Password</label>
+          <input
+            type="text"
+            id="inputPassword"
+            placeholder="secret"
+            required
+          />
+        </div>
+        <button class="btn canel" type="button">
+          cancel</button
+        ><button class="btn" type="submit">generate</button>
+      </form>
+    </section>
+    <script>
+      require("../scripts/account.js");
+    </script>
+  </body>
+</html>

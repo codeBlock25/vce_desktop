@@ -1,0 +1,227 @@
+.mainBody {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: whitesmoke;
+}
+
+.mainBody .choice {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.mainBody .choice span {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #101010;
+    color: whitesmoke;
+    margin: 0 5px;
+    font-family: KronaOne;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.mainBody .choice span.convert {
+    background-color: #bb1111;
+}
+
+.mainBody .formatter {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    /* overflow-X: auto; */
+    padding: 0 0 70px 0;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.formatter #dir {
+    position: fixed;
+    top: 50%;
+    transform: translateY(50%);
+    display: block;
+    width: 70px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.062), -5px -5px 5px rgba(255,
+            255,
+            255,
+            0.459);
+    z-index: 10000;
+}
+
+.formatter #dir svg {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: 0 20px 0 0;
+    fill: rgb(116,
+            116,
+            116);
+    z-index: -4;
+}
+
+.formatter #dir.forward {
+    right: 0;
+}
+
+.formatter #dir.back {
+    left: 0;
+}
+
+.formatter .plan {
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 100%;
+    padding: 40px 100px;
+    height: auto;
+    display: block;
+    min-height: 300px;
+    margin: 40px 0;
+    scroll-snap-align: center;
+    opacity: 0;
+    z-index: 1;
+    transition: ease-in-out .3s;
+}
+
+.formatter .plan:nth-of-type(1) {
+    opacity: 1;
+    z-index: 100;
+}
+
+.formatter .plan div {
+    font-size: 13px !important;
+}
+
+.formatter .plan .question {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    display: block;
+    margin: 20px 0;
+    border: 0px black solid;
+    transition: ease-in-out 0.3s;
+    box-shadow: 5px 5px 5px #1b1b1b0d, -6px -5px 10px white;
+}
+
+.formatter .plan .question:hover {
+    border: 1px black solid;
+}
+
+.formatter .plan .question::before {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    width: 100px;
+    height: 20px;
+    content: "Question";
+    background-color: #ff4d4d;
+    border-radius: 5px 5px 0 0;
+    color: white;
+    text-align: center;
+}
+
+.formatter .plan .question .mark {
+    position: absolute;
+    top: -20px;
+    right: 10px;
+    width: 100px;
+    height: 20px;
+    content: "Question";
+    background-color: #2d3667;
+    border-radius: 5px 5px 0 0;
+    color: white;
+    text-align: center;
+    font-size: 13px;
+}
+
+.formatter .plan .question .mark::before {
+    content: "mark: ";
+    width: fit-content;
+    height: fit-content;
+    font-weight: 600;
+}
+
+.formatter .plan .question .ques {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    display: block;
+    font-size: 13px;
+    padding: 10px;
+}
+
+
+.formatter .plan .ans {
+    width: 100%;
+    height: auto;
+    display: block;
+    min-height: 100px;
+    box-shadow: 5px 5px 5px #a9a9a90d, -6px -5px 10px #ffffff85;
+    padding: 7px;
+}
+
+.formatter .plan .ans .answer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* min-height: 40px; */
+    border-radius: 10px;
+    line-height: 20px;
+    display: block;
+    padding: 10px 25px;
+    background-color: transparent;
+    border: 1px #0000000f solid;
+    margin: 10px 0;
+    transition: ease-in-out 0.4s;
+    font-size: 13px;
+}
+
+.formatter .plan .ans .answer span {
+    background-color: transparent !important;
+}
+
+.formatter .plan .ans .answer::before {
+    content: "";
+    font-size: 14px;
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    background-color: #2929293d;
+    border-radius: 50%;
+}
+
+.formatter .plan .ans .answer.correct span {
+    color: white !important;
+}
+
+/* .formatter .plan .ans .answer.correct {
+  background-color: #ff4d4d;
+  color: white;
+} */
+
+.formatter .plan .ans .answer.correct::before {
+    /* border: 1px #ffffff0f solid; */
+    background-color: #111111;
+}
