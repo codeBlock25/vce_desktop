@@ -8,6 +8,10 @@
     background-color: whitesmoke;
 }
 
+.mainBody * {
+    cursor: default;
+}
+
 .mainBody .choice {
     position: fixed;
     bottom: 0;
@@ -64,17 +68,19 @@
             255,
             0.459);
     z-index: 10000;
+    cursor: pointer;
 }
 
 .formatter #dir svg {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     display: block;
     margin: 0 20px 0 0;
     fill: rgb(116,
             116,
             116);
     z-index: -4;
+    cursor: pointer;
 }
 
 .formatter #dir.forward {
@@ -117,7 +123,7 @@
     min-height: 100px;
     display: block;
     margin: 20px 0;
-    border: 0px black solid;
+    border: 2px white solid;
     transition: ease-in-out 0.3s;
     box-shadow: 5px 5px 5px #1b1b1b0d, -6px -5px 10px white;
 }
@@ -178,6 +184,7 @@
     min-height: 100px;
     box-shadow: 5px 5px 5px #a9a9a90d, -6px -5px 10px #ffffff85;
     padding: 7px;
+    border: 2px white solid;
 }
 
 .formatter .plan .ans .answer {
@@ -190,7 +197,7 @@
     display: block;
     padding: 10px 25px;
     background-color: transparent;
-    border: 1px #0000000f solid;
+    border: 1px #0000002c solid;
     margin: 10px 0;
     transition: ease-in-out 0.4s;
     font-size: 13px;

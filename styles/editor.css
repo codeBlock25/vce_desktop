@@ -18,13 +18,16 @@
     width: 280px;
     height: 100vh;
     display: block;
-    background-color: #efefef;
+    background-color: #4374ff;
     z-index: 1050;
     box-shadow: 9px 1px 10px #00000026;
-    padding: 80px 0 0 0;
+    padding: 90px 0 0 0;
     cursor: auto;
     font-family: Montserrat;
     transition: ease-in-out 0.4s;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-bottom: 60px;
 }
 
 .cs-Editor .panel.out {
@@ -32,31 +35,40 @@
 }
 
 .cs-Editor .panel .projectsBar {
-    width: calc(100% - 10px);
-    height: 30px;
+    position: fixed;
+    top: 50px;
+    width: 280px;
+    height: 40px;
     display: block;
-    padding: 0 0 0 40px;
-    margin: 0 5px;
-    box-shadow: 0 0 0 1px black;
-    line-height: 30px;
+    box-shadow: 0 0 10px 1px rgba(66, 66, 66, 0.418);
+    line-height: 40px;
     cursor: pointer;
     font-size: 16px;
+    text-align: center;
     font-weight: 600;
+    background-color: #111111;
+    color: white;
+
 }
 
 .cs-Editor .panel .work {
     width: calc(100% - 15px);
-    height: 30px;
+    height: 40px;
     display: block;
     text-align: left;
     padding: 0 0 0 40px;
     margin: 7px 0 0 0;
-    box-shadow: 5px 1px 5px #0c0c0c2e, 0 0 10px #ffffff26;
-    line-height: 30px;
+    box-shadow: 5px 1px 5px #4040400d, 0 0 10px #ffffff0a;
+    line-height: 45px;
     font-size: 12px;
-    color: white;
-    background-color: #101010;
+    color: #ffffff;
+    background-color: #efefef61;
+    border: 2px white solid;
     transition: ease-in-out 0.2s;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
 .cs-Editor .panel .work:hover {

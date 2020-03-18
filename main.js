@@ -17,7 +17,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true
     },
-    icon: `${__dirname}/logo.png)}`
+    icon: `${__dirname}/logo1024.ico)}`
   });
 
   // and load the index.html of the app.

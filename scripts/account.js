@@ -38,9 +38,6 @@ function encrypt(text, password) {
 
 // encrypt('hello', 'mygr8password')
 
-const questions = localForage.getItem('questions').then(result => {
-    return result
-})
 function nextWindow(pathToGo) {
     let newWin1 = new BrowserWindow({
         width: 1000,
@@ -99,89 +96,106 @@ _form.addEventListener('submit', async evt => {
     evt.preventDefault()
     var type = 'test'
     type = evt.target[1].checked ? 'test' : 'exam'
-    var ques = ''
-    await localForage.getItem('questions').then(quest => {
-        return (ques = quest)
-    })
-    let saver = new FullQuestionMark(
-        evt.target[0].value,
-        type,
-        evt.target[3].value,
-        evt.target[4].value,
-        evt.target[5].value,
-        evt.target[6].value,
-        ques.question,
-        evt.target[7].value
-    ).returnObject()
-    localForage.getItem('works').then(works => {
-        if (works) {
-            dialog
-                .showSaveDialog({
-                    title: 'save vce file',
-                    buttonLabel: 'convert',
-                    message: 'Give a name to the converted file',
-                    nameFieldLabel: 'file name',
-                })
-                .then(result => {
-                    console.log(result.filePath)
-                    try {
-                        fs.writeFile(
-                            `${result.filePath}.vce`,
-                            JSON.stringify(saver),
-                            (err, result) => {
-                                if (err) {
-                                    alert('unable to save please try again')
-                                    throw Error(err)
-                                } else {
-                                    localForage
-                                        .setItem('works', [...works, saver])
-                                        .then(() => {
-                                            console.log(result)
-                                            nextWindow('../view/load.html')
-                                        })
-                                }
+    await localForage.getItem('questions').then(questions => {
+        let saver = new FullQuestionMark(
+            evt.target[0].value,
+            type,
+            evt.target[3].value,
+            evt.target[4].value,
+            evt.target[5].value,
+            evt.target[6].value,
+            questions,
+            evt.target[7].value
+        ).returnObject()
+        localForage.getItem('dataStory').then(dataStory => {
+            localForage.getItem('works').then(works => {
+                if (works) {
+                    dialog
+                        .showSaveDialog({
+                            title: 'save vce file',
+                            buttonLabel: 'convert',
+                            message: 'Give a name to the converted file',
+                            nameFieldLabel: 'file name',
+                        })
+                        .then(result => {
+                            try {
+                                fs.writeFile(
+                                    `${result.filePath}.vce`,
+                                    JSON.stringify(saver),
+                                    (err, result) => {
+                                        if (err) {
+                                            alert(
+                                                'unable to save please try again'
+                                            )
+                                            throw Error(err)
+                                        } else {
+                                            localForage
+                                                .setItem('works', [
+                                                    ...works,
+                                                    {
+                                                        ...saver,
+                                                        data: dataStory,
+                                                    },
+                                                ])
+                                                .then(() => {
+                                                    console.log(result)
+                                                    nextWindow(
+                                                        '../view/load.html'
+                                                    )
+                                                })
+                                        }
+                                    }
+                                )
+                            } catch (error) {
+                                console.log(error)
+                                alert('unable to save please try again')
                             }
-                        )
-                    } catch (error) {
-                        console.log(error)
-                        alert('unable to save please try again')
-                    }
-                })
-        } else {
-            dialog
-                .showSaveDialog({
-                    title: 'save vce file',
-                    buttonLabel: 'qenerate',
-                    message: 'Give a name to the converted file',
-                    nameFieldLabel: 'file name',
-                })
-                .then(result => {
-                    try {
-                        fs.writeFile(
-                            `${result.filePath}.vce`,
-                            JSON.stringify(saver),
-                            (err, result) => {
-                                if (err) {
-                                    alert('unable to save please try again')
-                                    throw Error(err)
-                                } else {
-                                    localForage
-                                        .setItem('works', [saver])
-                                        .then(() => {
-                                            nextWindow('../view/load.html')
-                                        })
-                                }
+                        })
+                } else {
+                    dialog
+                        .showSaveDialog({
+                            title: 'save vce file',
+                            buttonLabel: 'qenerate',
+                            message: 'Give a name to the converted file',
+                            nameFieldLabel: 'file name',
+                        })
+                        .then(result => {
+                            try {
+                                fs.writeFile(
+                                    `${result.filePath}.vce`,
+                                    JSON.stringify(saver),
+                                    (err, result) => {
+                                        if (err) {
+                                            alert(
+                                                'unable to save please try again'
+                                            )
+                                            throw Error(err)
+                                        } else {
+                                            localForage
+                                                .setItem('works', [
+                                                    {
+                                                        ...saver,
+                                                        data: dataStory,
+                                                    },
+                                                ])
+                                                .then(() => {
+                                                    nextWindow(
+                                                        '../view/load.html'
+                                                    )
+                                                })
+                                        }
+                                    }
+                                )
+                            } catch (error) {
+                                console.log(error)
+                                alert('unable to save please try again')
                             }
-                        )
-                    } catch (error) {
-                        console.log(error)
-                        alert('unable to save please try again')
-                    }
-                })
-        }
+                        })
+                }
+            })
+        })
     })
 })
-
 cancel.addEventListener('click', () => {
     nextWindow('../view/load.html')
     // app.webContents.p;

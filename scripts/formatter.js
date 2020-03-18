@@ -99,10 +99,10 @@ localForage.getItem('data').then(async result => {
             counter++
         }
     }
-    console.log(questionblock)
     localForage.setItem('questions', questionblock).then(() => {
         questionblock.forEach(questione => {
             let block = document.createElement('div')
+            console.log(questione.options)
             block.classList.add('plan')
             block.innerHTML = `
               <div class="question">

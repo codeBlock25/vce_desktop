@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "package": "electron-packager . FIDDOOPOS --all",
-    "win": "electron-packager . vce_fiddo --win --asar --overwrite"
+    "win": "electron-packager . vce_fiddo_pos --win --asar"
   },
   "devDependencies": {
     "electron": "^8.0.1",
@@ -18,12 +18,10 @@
     "appId": "com.vce_fidddo.pos",
     "category": "public.app-category.utilities",
     "directories": {
-      "buildResources": "./",
-      "files": "./logo1024.ico"
+      "buildResources": "./"
     },
     "win": {
-      "target": "squirrel",
-      "icon": "./logo.png"
+      "target": "squirrel"
     }
   },
   "dependencies": {
