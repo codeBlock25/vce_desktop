@@ -1,0 +1,12 @@
+export const ANSWERBLOCK = "ANSWERBLOCK";
+export const LOADING = "LOADING";
+export const QUESTIONS = "QUESTION";
+export const QUESTIONPAGE = "QUESTIONPAGE";
+export const FILES = "FILES";
+export const FILE = "FILE";
+export const FAILED = "FAILED";
+export const PASSED = "PASSED";
+export const TIME = "TIME";
+export const FINISHED_IN = "FINISHED_IN";
+export const DONE = "DONE";
+export const STOPS = "STOPS";
