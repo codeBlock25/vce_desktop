@@ -71,30 +71,52 @@ localForage.getItem('data').then(async result => {
     })
     var counter = 0
     for (line of mark_down) {
+        // console.log(/^(answer:)/.test(line.toLowerCase()))
         if (/^(answer:)/.test(line.toLowerCase())) {
-            switch (line.toLowerCase().slice(-1)) {
-                case 'a':
-                    questionblock[counter].options[0]
-                        ? (questionblock[counter].options[0].correct = true)
-                        : ''
-                    break
-                case 'b':
-                    questionblock[counter].options[1]
-                        ? (questionblock[counter].options[1].correct = true)
-                        : ''
-                    break
-                case 'c':
-                    questionblock[counter].options[2]
-                        ? (questionblock[counter].options[2].correct = true)
-                        : ''
-                    break
-                case 'd':
-                    questionblock[counter].options[3]
-                        ? (questionblock[counter].options[3].correct = true)
-                        : ''
-                    break
-                default:
-                    break
+            if (
+                line
+                    .toLowerCase()
+                    .slice(-2)
+                    .includes('d')
+            ) {
+                questionblock[counter].options[3]
+                    ? (questionblock[counter].options[3].correct = true)
+                    : ''
+            } else if (
+                line
+                    .toLowerCase()
+                    .slice(-2)
+                    .includes('a')
+            ) {
+                questionblock[counter].options[0]
+                    ? (questionblock[counter].options[0].correct = true)
+                    : ''
+            } else if (
+                line
+                    .toLowerCase()
+                    .slice(-2)
+                    .includes('a')
+            ) {
+            } else if (
+                line
+                    .toLowerCase()
+                    .slice(-2)
+                    .includes('b')
+            ) {
+                questionblock[counter].options[1]
+                    ? (questionblock[counter].options[1].correct = true)
+                    : ''
+            } else if (
+                line
+                    .toLowerCase()
+                    .slice(-2)
+                    .includes('c')
+            ) {
+                questionblock[counter].options[2]
+                    ? (questionblock[counter].options[2].correct = true)
+                    : ''
+            } else {
+                console.log('noop')
             }
             counter++
         }
