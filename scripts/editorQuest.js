@@ -33,7 +33,7 @@ class Question_and_answer {
         this.correctB = correctB
         this.correctC = correctC
         this.correctD = correctD
-        this.imageBinary = imageBinary === '' ? '' : new Buffer(imageBinary)
+        this.imageBinary = imageBinary === '' ? '' : imageBinary
     }
     returnObject() {
         return new Object({
@@ -147,6 +147,7 @@ observer.observe(QuestionField, {
 })
 
 addQuestionBlockBtn.addEventListener('click', () => {
+    let rand = Math.ceil(Math.random() * 976531764)
     let block = document.createElement('div')
     block.classList.add('plan')
     block.innerHTML = `
@@ -163,8 +164,8 @@ addQuestionBlockBtn.addEventListener('click', () => {
           </div>
           <div class='image'>
             <img src='' class='img'>
-            <input type="file" accept="image/*" id="imgPicker" style="display: none;" maxlength='1' multiple='false'>
-            <label class='imgBtn' for='imgPicker'>add image</label>
+            <input type="file" accept="image/*" id="imgPicker${rand}" style="display: none;" maxlength='1' multiple='false'>
+            <label class='imgBtn' for='imgPicker${rand}'>add image</label>
           </div>
           <div class="ans">
             <div class="answer" contenteditable="true"></div>

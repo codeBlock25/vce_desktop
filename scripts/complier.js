@@ -1,9 +1,11 @@
 const localForage = require('localforage')
 const former = document.querySelector('.QuestionsPlan')
+
 localForage.getItem('questions').then(result => {
     if (result) {
         result.forEach(questione => {
             let block = document.createElement('div')
+            let rand = Math.ceil(Math.random() * 976531764)
             block.classList.add('plan')
             block.innerHTML = `
               <div class="question">
@@ -20,8 +22,8 @@ localForage.getItem('questions').then(result => {
               </div>
               <div class='image'>
                 <img src='' class='img'>
-                <input type="file" accept="image/*" id="imgPicker" style="display: none;" maxlength='1' multiple='false'>
-                <label class='imgBtn' for='imgPicker'>add image</label>
+                <input type="file" accept="image/*" id="imgPicker${rand}" style="display: none;" maxlength='1' multiple='false'>
+                <label class='imgBtn' for='imgPicker${rand}'>add image</label>
               </div>
               <div class="ans">
                 <div class=${
@@ -66,6 +68,7 @@ localForage.getItem('questions').then(result => {
     } else {
         let block2 = document.createElement('div')
         block2.classList.add('plan')
+        let rand = Math.ceil(Math.random() * 976531764)
         block2.innerHTML = `
                 <div class="question">
                   <span class="mark" contenteditable="true"></span>
@@ -80,8 +83,8 @@ localForage.getItem('questions').then(result => {
                 </div>
               <div class='image'>
               <img src='' class='img'>
-              <input type="file" accept="image/*" id="imgPicker" style="display: none;">
-              <label class='imgBtn' for='imgPicker'>add image</label>
+              <input type="file" accept="image/*" id="imgPicker${rand}" style="display: none;">
+              <label class='imgBtn' for='imgPicker${rand}'>add image</label>
               </div>
                 <div class="ans">
                   <div class='answer' contenteditable="true"></div>

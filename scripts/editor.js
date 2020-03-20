@@ -16,6 +16,7 @@ const plain = document.getElementById('plain')
 const nameSaver = document.getElementById('nameSaver')
 const localForage = require('localforage')
 const QuestionField = document.querySelector('.QuestionsPlan')
+
 // =========== markAction ============ //
 // const questionMarker = document.getElementById("questionMarker");
 // const imageMarker = document.getElementById("imageMarker");
@@ -35,7 +36,6 @@ QuestionField.addEventListener('change', evt => {
                 evt.target.files[0].type
             ) > -1
         ) {
-            console.log(evt.target.files[0].type)
             var reader = new FileReader()
             reader.onload = result => {
                 let base64 = btoa(result.target.result)
