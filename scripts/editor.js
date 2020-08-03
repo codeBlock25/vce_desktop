@@ -1,5 +1,7 @@
 const electronApp = require('electron').remote
-const { BrowserWindow } = electronApp
+const {
+    BrowserWindow
+} = electronApp
 const fs = require('fs')
 // const path = require("path");
 // const dialog = electronApp.dialog;
@@ -16,6 +18,29 @@ const plain = document.getElementById('plain')
 const nameSaver = document.getElementById('nameSaver')
 const localForage = require('localforage')
 const QuestionField = document.querySelector('.QuestionsPlan')
+require("./editorCodex")
+const EditorJS = require('@editorjs/editorjs');
+
+
+const editor = new EditorJS();
+
+let observer = new MutationObserver((mult) => {
+    tinymce.init({
+        selector: '.plan .question',
+        toolbar: true,
+        menubar: false,
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Daniel Amos',
+    });
+});
+
+observer.observe(QuestionField, {
+    childList: true,
+    subtree: true,
+    characterDataOldValue: true
+});
+
+
 
 // =========== markAction ============ //
 // const questionMarker = document.getElementById("questionMarker");
@@ -65,87 +90,6 @@ localForage.getItem('data').then(result => {
     }
 })
 
-// localForage.getItem("questions").then(result => {
-//   if (
-//     result !== null &&
-//     result !== undefined &&
-//     result != "" &&
-//     result != "null"
-//   ) {
-//     result.qeustion.forEach(questione => {
-//       let block = document.createElement("div");
-//       block.classList.add("plan");
-//       console.log(questione.image);
-//       block.innerHTML = `
-//               <div class="question">
-//                 <span class="mark" contenteditable="true">${questione.question
-//                   .mark || ""}</span>
-//                 <span
-//                   class="ques"
-//                   contenteditable="true"
-//                   spellcheck="true"
-//                   aria-placeholder="stuff"
-//                   title="Question"
-//                 >${questione.question.question}
-//                 </span>
-//               </div>
-//               <div class='image'>
-//               <img src=${questione.image} class='img'>
-//               <input type="file" accept="image/*" id="imgPicker" style="display: none;">
-//               <label class='imgBtn' for='imgPicker'>add image</label>
-//               </div>
-//               <div class="ans">
-//                 <div class=${
-//                   questione.options[0]
-//                     ? questione.options[0].correct === true
-//                       ? `"answer correct"`
-//                       : `"answer"`
-//                     : "answer"
-//                 } contenteditable="true">${
-//         questione.options[0] ? questione.options[0].op : ""
-//       }</div>
-//                 <div class=${
-//                   questione.options[1]
-//                     ? questione.options[1].correct === true
-//                       ? `"answer correct"`
-//                       : `"answer"`
-//                     : "answer"
-//                 } contenteditable="true">${
-//         questione.options[1] ? questione.options[1].op : ""
-//       }</div>
-//                 <div class=${
-//                   questione.options[2]
-//                     ? questione.options[2].correct === true
-//                       ? `"answer correct"`
-//                       : `"answer"`
-//                     : "answer"
-//                 } contenteditable="true">${
-//         questione.options[2] ? questione.options[2].op : ""
-//       }</div>
-//                 <div class=${
-//                   questione.options[3]
-//                     ? questione.options[3].correct === true
-//                       ? `"answer correct"`
-//                       : `"answer"`
-//                     : "answer"
-//                 } contenteditable="true">${
-//         questione.options[3] ? questione.options[3].op : ""
-//       }</div>
-//       <span class='delete'>remove block</span>
-//               </div>`;
-//       QuestionField.appendChild(block);
-//     });
-//   } else {
-// file1.parentElement.firstElementChild.style.backgroundImage = 'url(data:image/png;base64, reader.result)'}
-
-//   }
-// });
-
-// const inputImage = document.getElementById("imgPicker");
-// inputImage.addEventListener("change", evt => {
-//   console.log(evt);
-// });
-
 menuBTn.addEventListener('click', () => {
     if (menuBTn.className === 'nav-menu') {
         menuBTn.classList.add('active')
@@ -183,17 +127,6 @@ previewBtn.addEventListener('click', () => {
 })
 
 createBtn.addEventListener('click', () => {
-    // winBase.setFullScreen(false);
-    // setTimeout(() => {
-    //   winBase.close();
-    // }, 300);
-    // let newWin = new BrowserWindow({
-    //   width: 800,
-    //   height: 500,
-    //   webPreferences: {
-    //     nodeIntegration: true
-    //   }
-    // });
     winBase
         .loadURL(`file://${path.join(__dirname, '../view/load.html')}`)
         .then(result => {})

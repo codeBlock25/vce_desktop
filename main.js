@@ -1,4 +1,7 @@
-const { app, BrowserWindow } = require("electron");
+const {
+  app,
+  BrowserWindow
+} = require("electron");
 const path = require("path");
 if (handleSquirrelEvent(app)) {
   // squirrel event handled and app will exit in 1000ms, so don't do anything else
@@ -8,6 +11,7 @@ require("electron-reload")(__dirname, {
   electron: path.join(__dirname, "node_modules", ".bin", "electron"),
   hardResetMethod: "exit"
 });
+
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
@@ -17,12 +21,12 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true
     },
-    icon: `${__dirname}/logo1024.ico)}`
+    icon: path.join(__dirname, "icon.png"),
   });
 
   // and load the index.html of the app.
   win.loadFile(`${__dirname}/view/load.html`);
-
+  win.setIcon(path.join(__dirname, "icon.png"))
   // Open the DevTools.
   // win.webContents.openDevTools();
 }
@@ -61,7 +65,7 @@ function handleSquirrelEvent(application) {
   const rootAtomFolder = path.resolve(appFolder, "..");
   const updateDotExe = path.resolve(path.join(rootAtomFolder, "Update.exe"));
   const exeName = path.basename(process.execPath);
-  const spawn = function(command, args) {
+  const spawn = function (command, args) {
     let spawnedProcess, error;
     try {
       spawnedProcess = ChildProcess.spawn(command, args, {
@@ -70,7 +74,7 @@ function handleSquirrelEvent(application) {
     } catch (error) {}
     return spawnedProcess;
   };
-  const spawnUpdate = function(args) {
+  const spawnUpdate = function (args) {
     return spawn(updateDotExe, args);
   };
   const squirrelEvent = process.argv[1];

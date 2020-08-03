@@ -25,6 +25,13 @@
     }
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^21.0.0",
+    "@ckeditor/ckeditor5-dev-utils": "^23.0.0",
+    "@ckeditor/ckeditor5-editor-classic": "^21.0.0",
+    "@ckeditor/ckeditor5-essentials": "^21.0.0",
+    "@ckeditor/ckeditor5-paragraph": "^21.0.0",
+    "@ckeditor/ckeditor5-theme-lark": "^21.0.0",
+    "@editorjs/editorjs": "^2.18.0",
     "axios": "^0.19.2",
     "combine-reducers": "^1.0.0",
     "docx2html": "^1.1.0",
@@ -36,7 +43,10 @@
     "mammoth": "^1.4.9",
     "pdf-text-extract": "^1.5.0",
     "pdf-to-text": "^0.0.7",
-    "redux": "^4.0.5"
+    "postcss-loader": "3",
+    "raw-loader": "3",
+    "redux": "^4.0.5",
+    "style-loader": "1"
   },
   "prettier": {
     "trailingComma": "es5",

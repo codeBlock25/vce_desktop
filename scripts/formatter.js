@@ -1,7 +1,9 @@
 const electron = require('electron')
 const app = electron.remote
 const dialog = app.dialog
-const { BrowserWindow } = require('electron').remote
+const {
+    BrowserWindow
+} = require('electron').remote
 const win = app.getCurrentWindow()
 const localForage = require('localforage')
 const mainBody = document.getElementById('Body')
@@ -16,11 +18,11 @@ var questionblock = []
 localForage.getItem('data').then(async result => {
     var mark_down = []
     data = result
-    result.length <= 1 || result === null
-        ? ''
-        : result.split('\n').forEach(ment => {
-              mark_down.push(ment)
-          })
+    result.length <= 1 || result === null ?
+        '' :
+        result.split('\n').forEach(ment => {
+            mark_down.push(ment)
+        })
     var meme = new Promise((resolve, reject) => {
         try {
             var questionblocky = []
@@ -75,46 +77,45 @@ localForage.getItem('data').then(async result => {
         if (/^(answer:)/.test(line.toLowerCase())) {
             if (
                 line
-                    .toLowerCase()
-                    .slice(-2)
-                    .includes('d')
+                .toLowerCase()
+                .slice(-2)
+                .includes('d')
             ) {
-                questionblock[counter].options[3]
-                    ? (questionblock[counter].options[3].correct = true)
-                    : ''
+                questionblock[counter].options[3] ?
+                    (questionblock[counter].options[3].correct = true) :
+                    ''
             } else if (
                 line
-                    .toLowerCase()
-                    .slice(-2)
-                    .includes('a')
+                .toLowerCase()
+                .slice(-2)
+                .includes('a')
             ) {
-                questionblock[counter].options[0]
-                    ? (questionblock[counter].options[0].correct = true)
-                    : ''
+                questionblock[counter].options[0] ?
+                    (questionblock[counter].options[0].correct = true) :
+                    ''
             } else if (
                 line
-                    .toLowerCase()
-                    .slice(-2)
-                    .includes('a')
+                .toLowerCase()
+                .slice(-2)
+                .includes('a')
+            ) {} else if (
+                line
+                .toLowerCase()
+                .slice(-2)
+                .includes('b')
             ) {
+                questionblock[counter].options[1] ?
+                    (questionblock[counter].options[1].correct = true) :
+                    ''
             } else if (
                 line
-                    .toLowerCase()
-                    .slice(-2)
-                    .includes('b')
+                .toLowerCase()
+                .slice(-2)
+                .includes('c')
             ) {
-                questionblock[counter].options[1]
-                    ? (questionblock[counter].options[1].correct = true)
-                    : ''
-            } else if (
-                line
-                    .toLowerCase()
-                    .slice(-2)
-                    .includes('c')
-            ) {
-                questionblock[counter].options[2]
-                    ? (questionblock[counter].options[2].correct = true)
-                    : ''
+                questionblock[counter].options[2] ?
+                    (questionblock[counter].options[2].correct = true) :
+                    ''
             } else {
                 console.log('noop')
             }
@@ -211,7 +212,10 @@ mainBody.addEventListener('click', evt => {
     }
     if (evt.target.className === 'convert') {
         localForage
-            .setItem('questions', { question: questionblock, data: data })
+            .setItem('questions', {
+                question: questionblock,
+                data: data
+            })
             .then(i => {
                 console.log('done')
                 nextWindow('../view/account.html')
