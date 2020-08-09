@@ -1,9 +1,7 @@
 const electron = require('electron')
 const app = electron.remote
 const dialog = app.dialog
-const {
-    BrowserWindow
-} = require('electron').remote
+const { BrowserWindow } = require('electron').remote
 const win = app.getCurrentWindow()
 const localForage = require('localforage')
 const mainBody = document.getElementById('Body')
@@ -15,14 +13,14 @@ var set = 0
 var count = 0
 var data = []
 var questionblock = []
-localForage.getItem('data').then(async result => {
+localForage.getItem('data').then(async (result) => {
     var mark_down = []
     data = result
-    result.length <= 1 || result === null ?
-        '' :
-        result.split('\n').forEach(ment => {
-            mark_down.push(ment)
-        })
+    result.length <= 1 || result === null
+        ? ''
+        : result.split('\n').forEach((ment) => {
+              mark_down.push(ment)
+          })
     var meme = new Promise((resolve, reject) => {
         try {
             var questionblocky = []
@@ -68,54 +66,30 @@ localForage.getItem('data').then(async result => {
             reject(error)
         }
     })
-    await meme.then(result => {
+    await meme.then((result) => {
         questionblock = result
     })
     var counter = 0
     for (line of mark_down) {
         // console.log(/^(answer:)/.test(line.toLowerCase()))
         if (/^(answer:)/.test(line.toLowerCase())) {
-            if (
-                line
-                .toLowerCase()
-                .slice(-2)
-                .includes('d')
-            ) {
-                questionblock[counter].options[3] ?
-                    (questionblock[counter].options[3].correct = true) :
-                    ''
-            } else if (
-                line
-                .toLowerCase()
-                .slice(-2)
-                .includes('a')
-            ) {
-                questionblock[counter].options[0] ?
-                    (questionblock[counter].options[0].correct = true) :
-                    ''
-            } else if (
-                line
-                .toLowerCase()
-                .slice(-2)
-                .includes('a')
-            ) {} else if (
-                line
-                .toLowerCase()
-                .slice(-2)
-                .includes('b')
-            ) {
-                questionblock[counter].options[1] ?
-                    (questionblock[counter].options[1].correct = true) :
-                    ''
-            } else if (
-                line
-                .toLowerCase()
-                .slice(-2)
-                .includes('c')
-            ) {
-                questionblock[counter].options[2] ?
-                    (questionblock[counter].options[2].correct = true) :
-                    ''
+            if (line.toLowerCase().slice(-2).includes('d')) {
+                questionblock[counter].options[3]
+                    ? (questionblock[counter].options[3].correct = true)
+                    : ''
+            } else if (line.toLowerCase().slice(-2).includes('a')) {
+                questionblock[counter].options[0]
+                    ? (questionblock[counter].options[0].correct = true)
+                    : ''
+            } else if (line.toLowerCase().slice(-2).includes('a')) {
+            } else if (line.toLowerCase().slice(-2).includes('b')) {
+                questionblock[counter].options[1]
+                    ? (questionblock[counter].options[1].correct = true)
+                    : ''
+            } else if (line.toLowerCase().slice(-2).includes('c')) {
+                questionblock[counter].options[2]
+                    ? (questionblock[counter].options[2].correct = true)
+                    : ''
             } else {
                 console.log('noop')
             }
@@ -123,14 +97,15 @@ localForage.getItem('data').then(async result => {
         }
     }
     localForage.setItem('questions', questionblock).then(() => {
-        questionblock.forEach(questione => {
+        questionblock.forEach((questione) => {
             let block = document.createElement('div')
             console.log(questione.options)
             block.classList.add('plan')
             block.innerHTML = `
               <div class="question">
-                <span class="mark" contenteditable="true">${questione.question
-                    .mark || ''}</span>
+                <span class="mark" contenteditable="true">${
+                    questione.question.mark || ''
+                }</span>
                 <span
                   class="ques"
                   contenteditable="true"
@@ -196,16 +171,16 @@ function nextWindow(linkURL) {
         .loadURL(
             `file://${path.join(__dirname, linkURL || '../view/editor.html')}`
         )
-        .then(result => {
+        .then((result) => {
             console.log(result)
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(JSON.stringify(err))
         })
     win.close()
 }
 let counted = 0
-mainBody.addEventListener('click', evt => {
+mainBody.addEventListener('click', (evt) => {
     if (evt.target.className === 'edit') {
         // nextWindow();
         win.loadURL(`file://${path.join(__dirname, '../view/editor.html')}`)
@@ -214,9 +189,9 @@ mainBody.addEventListener('click', evt => {
         localForage
             .setItem('questions', {
                 question: questionblock,
-                data: data
+                data: data,
             })
-            .then(i => {
+            .then((i) => {
                 console.log('done')
                 nextWindow('../view/account.html')
             })
@@ -232,7 +207,7 @@ mainBody.addEventListener('click', evt => {
             counted = counted - 1
         }
 
-        plans.forEach(plan => {
+        plans.forEach((plan) => {
             plan.style.opacity = `0`
             plan.style.zIndex = `1`
         })
@@ -250,7 +225,7 @@ mainBody.addEventListener('click', evt => {
             counted = counted + 1
         }
 
-        plans.forEach(plan => {
+        plans.forEach((plan) => {
             plan.style.opacity = `0`
             plan.style.zIndex = `1`
         })

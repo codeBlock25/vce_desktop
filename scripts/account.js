@@ -11,10 +11,7 @@ const crypto = require('crypto')
 // cryptorize
 
 function getCipherKey(password) {
-    return crypto
-        .createHash('sha256')
-        .update(String(password))
-        .digest('base64')
+    return crypto.createHash('sha256').update(String(password)).digest('base64')
 }
 
 function encrypt(text, password) {
@@ -49,10 +46,10 @@ function nextWindow(pathToGo) {
     })
     newWin1
         .loadURL(`file://${path.join(__dirname, pathToGo)}`)
-        .then(result => {
+        .then((result) => {
             console.log(result)
         })
-        .catch(err => {
+        .catch((err) => {
             console.log(JSON.stringify(err))
         })
     win.close()
@@ -92,11 +89,11 @@ class FullQuestionMark {
     }
 }
 
-_form.addEventListener('submit', async evt => {
+_form.addEventListener('submit', async (evt) => {
     evt.preventDefault()
     var type = 'test'
     type = evt.target[1].checked ? 'test' : 'exam'
-    await localForage.getItem('questions').then(questions => {
+    await localForage.getItem('questions').then((questions) => {
         let saver = new FullQuestionMark(
             evt.target[0].value,
             type,
@@ -107,8 +104,8 @@ _form.addEventListener('submit', async evt => {
             questions,
             evt.target[7].value
         ).returnObject()
-        localForage.getItem('dataStory').then(dataStory => {
-            localForage.getItem('works').then(works => {
+        localForage.getItem('dataStory').then((dataStory) => {
+            localForage.getItem('works').then((works) => {
                 if (works) {
                     dialog
                         .showSaveDialog({
@@ -117,7 +114,7 @@ _form.addEventListener('submit', async evt => {
                             message: 'Give a name to the converted file',
                             nameFieldLabel: 'file name',
                         })
-                        .then(result => {
+                        .then((result) => {
                             try {
                                 fs.writeFile(
                                     `${result.filePath}.vce`,
@@ -159,7 +156,7 @@ _form.addEventListener('submit', async evt => {
                             message: 'Give a name to the converted file',
                             nameFieldLabel: 'file name',
                         })
-                        .then(result => {
+                        .then((result) => {
                             try {
                                 fs.writeFile(
                                     `${result.filePath}.vce`,
