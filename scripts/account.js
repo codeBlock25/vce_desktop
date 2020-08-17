@@ -8,7 +8,6 @@ const win = app.getCurrentWindow()
 const localForage = require('localforage')
 const cancel = document.querySelector('.btn.canel')
 const crypto = require('crypto')
-// cryptorize
 
 function getCipherKey(password) {
     return crypto.createHash('sha256').update(String(password)).digest('base64')
@@ -39,13 +38,15 @@ function nextWindow(pathToGo) {
     let newWin1 = new BrowserWindow({
         width: 1000,
         height: 700,
-        // fullscreen: true,
+        title: 'VCE--FDS App',
+        icon: path.join(__dirname, '../icon.png'),
         webPreferences: {
             nodeIntegration: true,
         },
     })
+    newWin1.loadURL(`file://${path.join(__dirname, pathToGo)}`)
     newWin1
-        .loadURL(`file://${path.join(__dirname, pathToGo)}`)
+        .setIcon(path.join(__dirname, '../icon.png'))
         .then((result) => {
             console.log(result)
         })

@@ -117,41 +117,30 @@ localForage.getItem('data').then(async (result) => {
               </div>
               <div class="ans">
                 <div class=${
-                    questione.options[0]
-                        ? questione.options[0].correct === true
-                            ? `"answer correct"`
-                            : `"answer"`
-                        : 'answer'
-                } contenteditable="true">${
-                questione.options[0] ? questione.options[0].op : ''
-            }</div>
+                    questione.options[0]?.correct === true
+                        ? `"answer correct"`
+                        : `"answer"`
+                } contenteditable="true">${questione.options[0]?.op ?? ''}</div>
                 <div class=${
-                    questione.options[1]
-                        ? questione.options[1].correct === true
-                            ? `"answer correct"`
-                            : `"answer"`
-                        : 'answer'
-                } contenteditable="true">${
-                questione.options[1] ? questione.options[1].op : ''
-            }</div>
+                    questione.options[1]?.correct === true
+                        ? `"answer correct"`
+                        : `"answer"`
+                } contenteditable="true">${questione.options[1]?.op ?? ''}</div>
                 <div class=${
-                    questione.options[2]
-                        ? questione.options[2].correct === true
-                            ? `"answer correct"`
-                            : `"answer"`
+                    questione.options[2]?.correct === true
+                        ? `"answer correct"`
                         : 'answer'
-                } contenteditable="true">${
-                questione.options[2] ? questione.options[2].op : ''
-            }</div>
+                } contenteditable="true">${questione.options[2]?.op ?? ''}</div>
                 <div class=${
-                    questione.options[3]
-                        ? questione.options[3].correct === true
-                            ? `"answer correct"`
-                            : `"answer"`
-                        : 'answer'
-                } contenteditable="true">${
-                questione.options[3] ? questione.options[3].op : ''
-            }</div>
+                    questione.options[3]?.correct === true
+                        ? `"answer correct"`
+                        : `"answer"`
+                } contenteditable="true">${questione.options[3]?.op ?? ''}</div>
+                <div class=${
+                    questione.options[4]?.correct === true
+                        ? `"answer correct"`
+                        : `"answer"`
+                } contenteditable="true">${questione.options[4]?.op ?? ''}</div>
               </div>`
             former.appendChild(block)
         })

@@ -6,82 +6,164 @@ localForage.getItem('questions').then((result) => {
         result.forEach((questione) => {
             let block = document.createElement('div')
             let rand = Math.ceil(Math.random() * 976531764)
+            let rand1 = Math.ceil(Math.random() * 976531764)
+            let rand2 = Math.ceil(Math.random() * 976531764)
+            let rand3 = Math.ceil(Math.random() * 976531764)
+            let rand4 = Math.ceil(Math.random() * 976531764)
+            let rand5 = Math.ceil(Math.random() * 976531764)
             block.classList.add('plan')
-            block.innerHTML = `
-              <div class="question">
+            let type = questione.type ?? 'text'
+            if (type === 'text') {
+                block.innerHTML = `
+            <div class="question">
                 <span class="mark" contenteditable="true">${
                     questione.question.mark || ''
                 }</span>
-                <span
+                  <span
                   class="ques"
                   contenteditable="true"
                   spellcheck="true"
                   aria-placeholder="stuff"
                   title="Question"
-                >${questione.question.question}
-                </span>
-                </div>
-                <span
+                  >${questione.question.question}
+                  </span>
+                  </div>
+                  <span
                   class="solu"
                   contenteditable="true"
                   spellcheck="true"
                   aria-placeholder="stuff"
                   title="Question"
-                >${questione?.question?.solution}
-                </span>
-              <div class='image'>
-                <img src='' class='img'>
-                <input type="file" accept=".png, .jpg, .jpeg" id="imgPicker${rand}" style="display: none;" maxlength='1' multiple='false'>
-                <label class='imgBtn' for='imgPicker${rand}'>add image</label>
-              </div>
-              <div class="ans">
-                <div class=${
-                    questione.options[0]
-                        ? questione.options[0].correct === true
-                            ? `"answer correct"`
-                            : `"answer"`
-                        : 'answer'
-                } contenteditable="true">${
-                questione.options[0] ? questione.options[0].op : ''
-            }</div>
-                <div class=${
-                    questione.options[1]
-                        ? questione.options[1].correct === true
-                            ? `"answer correct"`
-                            : `"answer"`
-                        : 'answer'
-                } contenteditable="true">${
-                questione.options[1] ? questione.options[1].op : ''
-            }</div>
-                <div class=${
-                    questione.options[2]
-                        ? questione.options[2].correct === true
-                            ? `"answer correct"`
-                            : `"answer"`
-                        : 'answer'
-                } contenteditable="true">${
-                questione.options[2] ? questione.options[2].op : ''
-            }</div>
-                <div class=${
-                    questione.options[3]
-                        ? questione.options[3].correct === true
-                            ? `"answer correct"`
-                            : `"answer"`
-                        : 'answer'
-                } contenteditable="true">${
-                questione.options[3] ? questione.options[3].op : ''
-            }</div> 
+                  >${questione?.question?.solution ?? ''}
+                  </span>
+                  <div class='image'>
+                  <img src='' class='img'>
+                  <input type="file" accept=".png, .jpg, .jpeg" id="imgPicker${rand}" style="display: none;" maxlength='1' multiple='false'>
+                  <label class='imgBtn' for='imgPicker${rand}'>add image</label>
+                  </div>
+                  <div class="ans">
+                  <div class=${
+                      questione.options[0]?.correct === true
+                          ? `"answer correct"`
+                          : `"answer"`
+                  } contenteditable="true">${
+                    questione.options[0]?.op ?? ''
+                }</div>
+                  <div class=${
+                      questione.options[1]?.correct === true
+                          ? `"answer correct"`
+                          : `"answer"`
+                  } contenteditable="true">${
+                    questione.options[1]?.op ?? ''
+                }</div>
+                  <div class=${
+                      questione.options[2]?.correct === true
+                          ? `"answer correct"`
+                          : `"answer"`
+                  } contenteditable="true">${
+                    questione.options[2]?.op ?? ''
+                }</div>
+                  <div class=${
+                      questione.options[3]?.correct === true
+                          ? `"answer correct"`
+                          : `"answer"`
+                  } contenteditable="true">${
+                    questione.options[3]?.op ?? ''
+                }</div> 
             <div class=${
-                questione.options[4]
-                    ? questione.options[4].correct === true
-                        ? `"answer correct"`
-                        : `"answer"`
-                    : 'answer'
-            } contenteditable="true">${
-                questione.options[4] ? questione.options[4].op : ''
-            }</div>
+                questione.options[4]?.correct === true
+                    ? `"answer correct"`
+                    : `"answer"`
+            } contenteditable="true">${questione.options[4]?.op ?? ''}</div>
+            <span class='delete'>remove block</span>
+            </div>`
+            } else {
+                block.innerHTML = ` 
+                 <div class="question">
+                <span class="mark" contenteditable="true">${
+                    questione.question.mark || ''
+                }</span>
+                  <span
+                  class="ques"
+                  contenteditable="true"
+                  spellcheck="true"
+                  aria-placeholder="stuff"
+                  title="Question"
+                  >${questione.question.question}
+                  </span>
+                  </div>
+                  <span
+                  class="solu"
+                  contenteditable="true"
+                  spellcheck="true"
+                  aria-placeholder="stuff"
+                  title="Question"
+                  >${questione?.question?.solution ?? ''}
+                  </span>
+                  <div class='image'>
+                  <img src='' class='img'>
+                  <input type="file" accept=".png, .jpg, .jpeg" id="imgPicker${rand}" style="display: none;" maxlength='1' multiple='false'>
+                  <label class='imgBtn' for='imgPicker${rand}'>add image</label>
+                  </div>
+              <div class="ans img">
+                <div class='image_answer'>
+                  <input type="file" accept=".png, .jpg, .jpeg" id="imgPicker${rand1}" style="display: none;" maxlength='1' multiple='false'>
+                  <label class='imgBtn' for='imgPicker${rand1}' style="background-image: url(${
+                    questione.options[0]?.op
+                })" data-src="${questione.options[0]?.op}"></label>
+                  <span class=${
+                      questione.options[0]?.correct === true
+                          ? `"imgLabel correct"`
+                          : `"imgLabel"`
+                  } >Add image</span>
+                </div>
+                <div class='image_answer correct'>
+                  <input type="file" accept=".png, .jpg, .jpeg" id="imgPicker${rand2}" style="display: none;" maxlength='1' multiple='false'>
+                  <label class='imgBtn' for='imgPicker${rand2}' style="background-image: url(${
+                    questione.options[1]?.op
+                })" data-src="${questione.options[1]?.op}"></label>
+                  <span class=${
+                      questione.options[1]?.correct === true
+                          ? `"imgLabel correct"`
+                          : `"imgLabel"`
+                  } >Add image</span>
+                </div>
+                <div class='image_answer'>
+                  <input type="file" accept=".png, .jpg, .jpeg" id="imgPicker${rand3}" style="display: none;" maxlength='1' multiple='false'>
+                  <label class='imgBtn' for='imgPicker${rand3}' style="background-image: url(${
+                    questione.options[2]?.op
+                })" data-src="${questione.options[2]?.op}"></label>
+                  <span class=${
+                      questione.options[2]?.correct === true
+                          ? `"imgLabel correct"`
+                          : `"imgLabel"`
+                  } >Add image</span>
+                </div>
+                <div class='image_answer'>
+                  <input type="file" accept=".png, .jpg, .jpeg" id="imgPicker${rand4}" style="display: none;" maxlength='1' multiple='false'>
+                  <label class='imgBtn' for='imgPicker${rand4}' style="background-image: url(${
+                    questione.options[3]?.op
+                })" data-src="${questione.options[3]?.op}"></label>
+                  <span class=${
+                      questione.options[3]?.correct === true
+                          ? `"imgLabel correct"`
+                          : `"imgLabel"`
+                  } >Add image</span>
+                </div>
+                <div class='image_answer'>
+                  <input type="file" accept=".png, .jpg, .jpeg" id="imgPicker${rand5}" style="display: none;" maxlength='1' multiple='false'>
+                  <label class='imgBtn' for='imgPicker${rand5}' style="background-image: url(${
+                    questione.options[4]?.op
+                })" data-src="${questione.options[4]?.op}"></label>
+                  <span class=${
+                      questione.options[4]?.correct === true
+                          ? `"imgLabel correct"`
+                          : `"imgLabel"`
+                  } >Add image</span>
+                </div>
                 <span class='delete'>remove block</span>
               </div>`
+            }
             former.appendChild(block)
         })
     } else {

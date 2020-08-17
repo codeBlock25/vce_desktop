@@ -1,48 +1,49 @@
 {
-  "name": "vce_desktop",
-  "version": "1.0.0",
-  "main": "main.js",
-  "license": "MIT",
-  "scripts": {
-    "start": "electron .",
-    "package": "electron-packager . FIDDOOPOS --all",
-    "win": "electron-packager . vce_fiddo_pos --win --asar"
-  },
-  "devDependencies": {
-    "electron": "^8.0.1",
-    "electron-packager": "^14.1.1",
-    "redux-devtools-extension": "^2.13.8"
-  },
-  "homepage": "./load.html",
-  "build": {
-    "appId": "com.vce_fidddo.pos",
-    "category": "public.app-category.utilities",
-    "directories": {
-      "buildResources": "./"
+    "name": "vce_desktop",
+    "version": "1.0.0",
+    "main": "main.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "electron .",
+        "build_win": "electron-packager . --overwrite --asar --platform=win32 --arch=x64 --icon='./icon.ico' --prune=true --out=release-builds-windows --version-string.CompanyName='FemSam' --version-string.FileDescription=CE --version-string.ProductName='FemSam Exam Designer'",
+        "build_win64": "electron-packager . --overwrite --asar --platform=win64 --arch=ia64 --icon=icon.icns --prune=true --out=release-builds-windows --version-string.CompanyName='FemSam' --version-string.FileDescription=CE --version-string.ProductName='FemSam Exam Designer'"
     },
-    "win": {
-      "target": "squirrel"
+    "devDependencies": {
+        "electron": "^8.0.1",
+        "electron-packager": "^14.1.1",
+        "redux-devtools-extension": "^2.13.8"
+    },
+    "homepage": "./load.html",
+    "build": {
+        "appId": "com.vce_fidddo.pos",
+        "category": "public.app-category.utilities",
+        "directories": {
+            "buildResources": "./"
+        },
+        "win": {
+            "target": "squirrel",
+            "icon": "./icon.ico"
+        }
+    },
+    "dependencies": {
+        "axios": "^0.19.2",
+        "docx2html": "^1.1.0",
+        "electron-reload": "^1.5.0",
+        "electron-squirrel-startup": "^1.0.0",
+        "electron-winstaller": "^4.0.0",
+        "localforage": "^1.7.3",
+        "lodash": "^4.17.15",
+        "mammoth": "^1.4.9",
+        "pdf-text-extract": "^1.5.0",
+        "pdf-to-text": "^0.0.7",
+        "postcss-loader": "3",
+        "raw-loader": "3",
+        "style-loader": "1"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
     }
-  },
-  "dependencies": {
-    "axios": "^0.19.2",
-    "docx2html": "^1.1.0",
-    "electron-reload": "^1.5.0",
-    "electron-squirrel-startup": "^1.0.0",
-    "electron-winstaller": "^4.0.0",
-    "localforage": "^1.7.3",
-    "lodash": "^4.17.15",
-    "mammoth": "^1.4.9",
-    "pdf-text-extract": "^1.5.0",
-    "pdf-to-text": "^0.0.7",
-    "postcss-loader": "3",
-    "raw-loader": "3",
-    "style-loader": "1"
-  },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 4,
-    "semi": false,
-    "singleQuote": true
-  }
 }
